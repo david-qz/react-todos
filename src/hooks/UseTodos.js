@@ -1,16 +1,22 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { getAllTodos } from '../services/todos';
+import * as TodosService from '../services/todos';
 
 export default function useTodos() {
   const [todos, setTodos] = useState([]);
+  const [version, setVersion] = useState(0);
 
   useEffect(() => {
-    getAllTodos()
+    TodosService.getAllTodos()
       .then(todos => setTodos(todos))
       // eslint-disable-next-line no-console
       .catch(error => console.log(error));
-  }, []);
+  }, [version]);
 
-  return { todos };
+  function addTodo(description) {
+    TodosService.addTodo(description);
+    setVersion(version => version + 1);
+  }
+
+  return { todos, addTodo };
 }

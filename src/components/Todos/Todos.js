@@ -6,13 +6,22 @@ import './Todos.css';
 
 export default function Todos() {
   const { user } = useContext(UserContext);
-  const { todos } = useTodos();
+  const { todos, addTodo } = useTodos();
 
   if (!user) return <Redirect to="/auth/sign-in" />;
 
+  async function handleNewTodoFormSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const description = formData.get('description');
+    await addTodo(description);
+    form.reset();
+  }
+
   return <div>
     <h2>Your Todos</h2>
-    <form>
+    <form onSubmit={handleNewTodoFormSubmit}>
       <input name="description" placeholder="What do you need to do?" required />
     </form>
     <ul>

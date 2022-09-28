@@ -7,3 +7,11 @@ export async function getAllTodos() {
 
   return checkError(response);
 }
+
+export async function addTodo(description) {
+  const response = await client
+    .from('todos')
+    .insert({ description });
+
+  return checkError(response);
+}
