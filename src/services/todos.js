@@ -3,7 +3,8 @@ import { client, checkError } from './client';
 export async function getAllTodos() {
   const response = await client
     .from('todos')
-    .select('*');
+    .select('*')
+    .order('created_at');
 
   return checkError(response);
 }
