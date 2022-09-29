@@ -16,8 +16,8 @@ export default function Todos() {
     const form = e.target;
     const formData = new FormData(form);
     const description = formData.get('description');
-    await addTodo(description);
     form.reset();
+    await addTodo(description);
   }
 
   return <div className='Todos'>
