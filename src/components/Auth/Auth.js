@@ -2,7 +2,7 @@ import './Auth.css';
 import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
 import { Link, Redirect, useParams } from 'react-router-dom';
-import { logIn } from '../../services/auth';
+import { logIn, signUp } from '../../services/auth';
 import { useState } from 'react';
 
 export default function Auth() {
@@ -23,7 +23,9 @@ export default function Auth() {
     const formData = new FormData(e.target);
     const email = formData.get('email');
     const password = formData.get('password');
-    const { user, error } = await logIn(email, password);
+    const { user, error } = method === 'sign-in'
+      ? await logIn(email, password)
+      : await signUp(email, password);
     if (error) {
       setError(error.message);
     } else {
