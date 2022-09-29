@@ -7,7 +7,7 @@ import './Todos.css';
 
 export default function Todos() {
   const { user } = useContext(UserContext);
-  const { todos, addTodo, toggleTodoCompleted } = useTodos();
+  const { todos, addTodo, toggleTodoCompleted, deleteTodo } = useTodos();
 
   if (!user) return <Redirect to="/auth/sign-in" />;
 
@@ -32,6 +32,7 @@ export default function Todos() {
             <TodoItem
               todo={todo}
               toggleTodoCompleted={toggleTodoCompleted}
+              deleteTodo={deleteTodo}
             />
           </li>;
         })

@@ -22,3 +22,14 @@
     cursor: default;
     user-select: none;
 }
+
+.TodoItem .delete {
+    color: rgb(185, 14, 14);
+    visibility: hidden;
+}
+.TodoItem:hover .delete {
+    visibility: visible;
+}
+.TodoItem .delete:hover {
+    transform: rotate(-15deg);
+}

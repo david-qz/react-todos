@@ -28,5 +28,10 @@ export default function useTodos() {
     setVersion(version => version + 1);
   }
 
-  return { todos, addTodo, toggleTodoCompleted };
+  async function deleteTodo(id) {
+    await TodosService.deleteTodo(id);
+    setVersion(version => version + 1);
+  }
+
+  return { todos, addTodo, toggleTodoCompleted, deleteTodo };
 }

@@ -1,10 +1,14 @@
 import './TodoItem.css';
 
-export default function TodoItem({ todo, toggleTodoCompleted }) {
+export default function TodoItem({ todo, toggleTodoCompleted, deleteTodo }) {
   const { id, description, complete } = todo;
 
   function handleToggle() {
     toggleTodoCompleted(id);
+  }
+
+  function handleDelete() {
+    deleteTodo(id);
   }
 
   return <div className='TodoItem'>
@@ -15,5 +19,6 @@ export default function TodoItem({ todo, toggleTodoCompleted }) {
     >
       {description}
     </span>
+    <i className="delete fa-regular fa-trash-can" onClick={handleDelete} />
   </div>;
 }
