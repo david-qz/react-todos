@@ -1,17 +1,16 @@
-import { useState } from 'react';
 import './TodoItem.css';
 
-export default function TodoItem({ todo: { id, description, complete } }) {
-  const [checked, setChecked] = useState(complete);
+export default function TodoItem({ todo, toggleTodoCompleted }) {
+  const { id, description, complete } = todo;
 
   function handleToggle() {
-    setChecked(!checked);
+    toggleTodoCompleted(id);
   }
 
   return <div className='TodoItem'>
-    <input type="checkbox" checked={checked} onClick={handleToggle}/>
+    <input type="checkbox" checked={complete} onChange={handleToggle} />
     <span
-      className={`description ${checked && 'complete'}`}
+      className={`description ${complete && 'complete'}`}
       onClick={handleToggle}
     >
       {description}

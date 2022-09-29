@@ -3,6 +3,9 @@ import { useState } from 'react';
 import * as TodosService from '../services/todos';
 
 export default function useTodos() {
+  // FIXME: refreshing an authoritative list of todos from the server
+  // after each state transition before updating the UI adds a significant
+  // delay to the app. Find another way to doo this.
   const [todos, setTodos] = useState([]);
   const [version, setVersion] = useState(0);
 
@@ -18,5 +21,12 @@ export default function useTodos() {
     setVersion(version => version + 1);
   }
 
-  return { todos, addTodo };
+  async function toggleTodoCompleted(id) {
+    const todo = todos.find(x => x.id === id);
+    todo.complete = !todo.complete;
+    await TodosService.updateTodo(todo);
+    setVersion(version => version + 1);
+  }
+
+  return { todos, addTodo, toggleTodoCompleted };
 }
