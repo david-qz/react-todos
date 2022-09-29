@@ -19,7 +19,7 @@ export default function Todos() {
     form.reset();
   }
 
-  return <div>
+  return <div className='Todos'>
     <h2>Your Todos</h2>
     <form onSubmit={handleNewTodoFormSubmit}>
       <input name="description" placeholder="What do you need to do?" required />
