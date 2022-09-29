@@ -6,7 +6,6 @@ import './Header.css';
 
 export default function Header() {
   const { user, setUser } = useContext(UserContext);
-  const username = user?.email.split('@')[0];
 
   function handleSignOut() {
     signOut();
@@ -21,12 +20,12 @@ export default function Header() {
       {
         user
           ? <>
-            <span>{`Hello ${username}`}</span>
-            <button onClick={handleSignOut}>Sign Out</button>
+            <span>{user.email}</span>
+            <span className="button-link" onClick={handleSignOut}>Sign Out</span>
           </>
           : <>
-            <NavLink to="/auth/sign-in">Sign In</NavLink>
-            <NavLink to="/auth/sign-up">Sign Up</NavLink>
+            <NavLink className="button-link" to="/auth/sign-in">Sign In</NavLink>
+            <NavLink className="button-link" to="/auth/sign-up">Sign Up</NavLink>
           </>
       }
     </div>
