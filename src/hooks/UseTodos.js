@@ -13,8 +13,8 @@ export default function useTodos() {
       .catch(error => console.log(error));
   }, [version]);
 
-  function addTodo(description) {
-    TodosService.addTodo(description);
+  async function addTodo(description) {
+    await TodosService.addTodo(description);
     setVersion(version => version + 1);
   }
 
