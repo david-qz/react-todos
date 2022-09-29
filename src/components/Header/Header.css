@@ -1,0 +1,23 @@
+.Header {
+    padding: 10px;
+    background-color: rgb(133, 192, 131);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Header .left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.Header .right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.Header .logo {
+    font-size: 2rem;
+    font-weight: bold;
+}
