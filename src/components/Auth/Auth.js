@@ -1,7 +1,7 @@
 import './Auth.css';
 import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
-import { NavLink, Redirect, useParams } from 'react-router-dom';
+import { Link, Redirect, useParams } from 'react-router-dom';
 import { logIn } from '../../services/auth';
 import { useState } from 'react';
 
@@ -31,18 +31,25 @@ export default function Auth() {
     }
   }
 
-  return <form onSubmit={handleSubmit}>
-    <NavLink to="./sign-in">Sign In</NavLink>
-    <NavLink to="./sign-up">Sign Up</NavLink>
-    <label>
-      Email
-      <input name="email" required />
-    </label>
-    <label>
-      Password
-      <input name="password" type="password" required />
-    </label>
-    <button>{method === 'sign-in' ? 'Sign In' : 'Sign Up'}</button>
-    {error && <span className='error'>{error}</span>}
-  </form>;
+  const methodNiceName = method === 'sign-in' ? 'Sign In' : 'Sign Up';
+  return <div className='Auth'>
+    <form onSubmit={handleSubmit}>
+      <h3>{methodNiceName}</h3>
+      <label>
+        Email
+        <input name="email" required />
+      </label>
+      <label>
+        Password
+        <input name="password" type="password" required />
+      </label>
+      <button>{methodNiceName}</button>
+      {error && <span className='error'>{error}</span>}
+    </form>
+    {
+      method === 'sign-in'
+        ? <Link to="./sign-up">Need to make an account?</Link>
+        : <Link to="./sign-in">Already have an account?</Link>
+    }
+  </div>;
 }
