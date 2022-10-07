@@ -1,0 +1,49 @@
+.Header {
+    padding: 10px;
+    background-color: rgb(133, 192, 131);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Header .left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+.Header .right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.Header .logo {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.Header .stacked {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-end;
+}
+
+.Header .fake-link {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.Header .button-link {
+    cursor: pointer;
+    text-decoration: none;
+    padding: 10px;
+    color: white;
+    background-color: hsl(214, 80%, 60%);
+    border-radius: 10px;
+}
+
+.Header .button-link.active {
+    background-color: hsl(214, 70%, 70%);
+}

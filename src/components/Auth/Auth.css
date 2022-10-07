@@ -1,0 +1,36 @@
+.Auth {
+    padding-top: 25px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.Auth > form {
+    padding: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.Auth > form label {
+    display: contents;
+}
+
+.Auth > form input {
+    width: 200px;
+    margin-top: 3px;
+    margin-bottom: 10px;
+}
+
+.Auth > form button {
+    align-self: flex-end;
+}
+
+.Auth > form .error {
+    margin-top: 10px;
+    color: red;
+    align-self: center;
+}
+
+.Auth > a:visited {
+    color: inherit;
+}

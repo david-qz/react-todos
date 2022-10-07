@@ -1,0 +1,35 @@
+.TodoItem {
+    padding: 5px 0;
+    position: relative;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+.TodoItem input[type="checkbox"] {
+    margin: 0;
+    width: 24px;
+    height: 24px;
+}
+
+.TodoItem .complete {
+    text-decoration: line-through;
+}
+
+.TodoItem .description {
+    cursor: default;
+    user-select: none;
+}
+
+.TodoItem .delete {
+    color: rgb(185, 14, 14);
+    visibility: hidden;
+}
+.TodoItem:hover .delete {
+    visibility: visible;
+}
+.TodoItem .delete:hover {
+    transform: rotate(-15deg);
+}
